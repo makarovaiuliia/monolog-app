@@ -1,11 +1,17 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema, Document, Model } from "mongoose";
+import { IEntryDocument } from "../types/entry";
 
-const entrySchema = new mongoose.Schema({
+const entrySchema: Schema<IEntryDocument> = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  content: String,
-  title: String,
-  mood: String,
+  content: { type: String },
+  title: { type: String },
+  mood: { type: String },
   date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Entry", entrySchema);
+const EntryModel: Model<IEntryDocument> = mongoose.model<IEntryDocument>(
+  "Entry",
+  entrySchema
+);
+
+export default EntryModel;

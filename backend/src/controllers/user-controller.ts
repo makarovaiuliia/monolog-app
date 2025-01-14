@@ -1,9 +1,26 @@
 import type { Request, Response, NextFunction } from "express";
+import userService from "../service/user-service";
+import { IUser } from "../types/user";
 
-class UserController {
-  async registration(req: Request, res: Response, next: NextFunction) {
+interface IUserController {
+  register(req: Request<IUser>, res: Response, next: NextFunction): void;
+}
+
+const MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days life of token
+
+class UserController implements IUserController {
+  async register(req: Request<IUser>, res: Response, next: NextFunction) {
     try {
-    } catch (e) {}
+      const userData = await userService.register(req.body);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: MAX_AGE,
+        httpOnly: true,
+        secure: true,
+      });
+      return res.json(userData);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
@@ -28,4 +45,4 @@ class UserController {
   }
 }
 
-module.exports = new UserController();
+export default new UserController();

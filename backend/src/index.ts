@@ -1,10 +1,10 @@
 import type { Application } from "express";
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-// const cookieParser = require("cookieParser");
-const router = require("./router/index");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import router from "./router/index";
+import mongoose from "mongoose";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const app: Application = express();
 const uri = process.env.MONGODB_URI as string;
 app.use(express.json());
 app.use(cors());
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use("/api", router);
 
 const port = process.env.PORT || 5000;
