@@ -1,8 +1,8 @@
 export default class AppError extends Error {
   statusCode: number;
-  errors?: Error[];
+  errors?: unknown[];
 
-  constructor(statusCode: number, message: string, errors: Error[] = []) {
+  constructor(statusCode: number, message: string, errors: unknown[] = []) {
     super(message);
     this.statusCode = statusCode;
     this.errors = errors;
@@ -12,7 +12,7 @@ export default class AppError extends Error {
     return new AppError(401, "User not authorized");
   }
 
-  static BadRequest(message: string, errors: Error[]) {
+  static BadRequest(message: string, errors?: unknown[]) {
     return new AppError(400, message, errors);
   }
 }
