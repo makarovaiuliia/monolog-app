@@ -1,6 +1,7 @@
 import { Router } from "express";
 import UserController from "../controllers/user-controller";
 import { body } from "express-validator";
+import authMiddleware from "../middlewares/auth-middleware"; // вставить в нужное место
 const router = Router();
 
 router.post(
@@ -13,6 +14,5 @@ router.post(
 router.post("/login", UserController.login);
 router.post("/logout", UserController.logout);
 router.get("/refresh", UserController.refresh);
-router.get("/getUsers", UserController.getUsers);
 
 export default router;
