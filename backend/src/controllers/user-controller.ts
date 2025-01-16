@@ -13,26 +13,33 @@ interface IUserController {
 const MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days life of token
 
 class UserController implements IUserController {
-  private validateRequest(req: Request, next: NextFunction): void {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw AppError.BadRequest("Validation Error", errors.array());
-    }
-  }
+  // private validateRequest(req: Request, next: NextFunction): void {
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     throw AppError.BadRequest("Validation Error", errors.array());
+  //   }
+  // }
 
-  private setRefreshTokenCookie(res: Response, token: string): void {
-    res.cookie("refreshToken", token, {
-      maxAge: MAX_AGE,
-      httpOnly: true,
-      secure: true,
-    });
-  }
+  // private setRefreshTokenCookie(res: Response, token: string): void {
+  //   res.cookie("refreshToken", token, {
+  //     maxAge: MAX_AGE,
+  //     httpOnly: true,
+  //     secure: true,
+  //   });
+  // }
 
   async register(req: Request, res: Response, next: NextFunction) {
     try {
-      this.validateRequest(req, next);
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        throw AppError.BadRequest("Validation Error", errors.array());
+      }
       const userData = await userService.register(req.body);
-      this.setRefreshTokenCookie(res, userData.refreshToken);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: MAX_AGE,
+        httpOnly: true,
+        secure: true,
+      });
       res.status(201).json(userData);
     } catch (err) {
       next(err);
@@ -42,7 +49,11 @@ class UserController implements IUserController {
   async login(req: Request, res: Response, next: NextFunction) {
     try {
       const userData = await userService.login(req.body);
-      this.setRefreshTokenCookie(res, userData.refreshToken);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: MAX_AGE,
+        httpOnly: true,
+        secure: true,
+      });
       res.status(201).json(userData);
     } catch (err) {
       next(err);
@@ -70,7 +81,11 @@ class UserController implements IUserController {
         throw AppError.BadRequest("No refresh token provided");
       }
       const userData = await userService.refresh(refreshToken);
-      this.setRefreshTokenCookie(res, userData.refreshToken);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: MAX_AGE,
+        httpOnly: true,
+        secure: true,
+      });
       res.status(201).json(userData);
     } catch (err) {
       next(err);

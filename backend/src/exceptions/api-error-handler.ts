@@ -6,6 +6,8 @@ export default class AppError extends Error {
     super(message);
     this.statusCode = statusCode;
     this.errors = errors;
+
+    Object.setPrototypeOf(this, AppError.prototype);
   }
 
   static UnauthorizedError() {

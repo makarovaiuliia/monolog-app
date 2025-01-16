@@ -2,8 +2,10 @@ import { Router } from "express";
 import UserController from "../controllers/user-controller";
 import { body } from "express-validator";
 import authMiddleware from "../middlewares/auth-middleware"; // вставить в нужное место
+import EntryController from "../controllers/entry-controller";
 const router = Router();
 
+// authentication
 router.post(
   "/register",
   body("email").isEmail(),
@@ -12,7 +14,14 @@ router.post(
   UserController.register
 );
 router.post("/login", UserController.login);
-router.post("/logout", UserController.logout);
+router.post("/logout", authMiddleware, UserController.logout);
 router.get("/refresh", UserController.refresh);
+
+// diary operations
+
+router.get("/:userId/entries", authMiddleware, EntryController.getAllEntries);
+router.get("/entries/:entryId", authMiddleware, EntryController.getEntryById);
+router.post("/:userId/entries", authMiddleware, EntryController.addEntry);
+router.post("/entries/:entryId", authMiddleware, EntryController.editEntry);
 
 export default router;

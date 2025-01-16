@@ -31,7 +31,7 @@ class TokenService implements ITokenService {
     this.refreshSecret = process.env.JWT_REFRESH_SECRET || "";
 
     if (!this.accessSecret || !this.refreshSecret) {
-      // throw new Error("JWT secrets are not properly configured");
+      throw new Error("JWT secrets are not properly configured");
     }
   }
 

@@ -1,11 +1,23 @@
 import mongoose, { Document } from "mongoose";
 
-interface IEntry {
-  userId: mongoose.Types.ObjectId;
-  content?: string;
-  title?: string;
-  mood?: string;
-  date?: Date;
+export interface IEntry {
+  content: string;
+  title: string;
+  mood: Moods;
 }
 
-export interface IEntryDocument extends IEntry, Document {}
+interface IEntryDB extends IEntry {
+  userId: mongoose.Types.ObjectId;
+  date: Date;
+}
+
+export interface IEntryDocument extends IEntryDB, Document {}
+
+export enum Moods {
+  HAPPY = "Happy",
+  SATISFIED = "Satisfied",
+  GOOD = "Good",
+  FURIOUS = "Furious",
+  UPSET = "Upset",
+  DEPRESSED = "Depressed",
+}
