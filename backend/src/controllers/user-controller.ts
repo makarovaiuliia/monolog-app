@@ -13,21 +13,6 @@ interface IUserController {
 const MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 days life of token
 
 class UserController implements IUserController {
-  // private validateRequest(req: Request, next: NextFunction): void {
-  //   const errors = validationResult(req);
-  //   if (!errors.isEmpty()) {
-  //     throw AppError.BadRequest("Validation Error", errors.array());
-  //   }
-  // }
-
-  // private setRefreshTokenCookie(res: Response, token: string): void {
-  //   res.cookie("refreshToken", token, {
-  //     maxAge: MAX_AGE,
-  //     httpOnly: true,
-  //     secure: true,
-  //   });
-  // }
-
   async register(req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req);

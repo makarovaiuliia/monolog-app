@@ -17,6 +17,10 @@ router.post("/login", UserController.login);
 router.post("/logout", authMiddleware, UserController.logout);
 router.get("/refresh", UserController.refresh);
 
+// user
+// router.get("/users", UserController.getUser); // get user by token or id
+
+
 // diary operations
 
 router.get("/:userId/entries", authMiddleware, EntryController.getAllEntries);
