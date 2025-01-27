@@ -1,0 +1,13 @@
+:root {
+  --background: '#D9D9D9',
+  --background-secondary: '#ECE2DF',
+  --text: '#171717',
+  --text-secondary: '#928A84',
+  --accent-satisfaction: '#919C62',
+  --accent-happy: '#E8D384',
+  --accent-good:'#7DA4DB',
+  --accent-upset:'#A6ACDC',
+  --accent-furious:'#E1927F',
+  --accent-depressed: '#825E4C',
+  --white: '#ffffff',
+}

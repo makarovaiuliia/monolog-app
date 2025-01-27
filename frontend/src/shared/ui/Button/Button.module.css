@@ -1,0 +1,17 @@
+.root {
+  background-color: rgba(176, 144, 140, 0.3);
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 60px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.root:hover {
+  background-color: rgba(176, 144, 140, 0.5);
+}
+
+.root:active {
+  background-color: rgba(176, 144, 140, 1);
+}
