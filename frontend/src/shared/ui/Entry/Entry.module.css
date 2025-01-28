@@ -7,6 +7,7 @@
   transition: 0.3s;
   border-radius: 30px;
   background-color: var(--white);
+  transition: 0.3s;
 }
 
 .root.Happy {
@@ -33,6 +34,10 @@
   background-color: var(--accent-depressed);
 }
 
+.root:active {
+  opacity: 0.8;
+}
+
 .info {
   flex: 1;
   min-width: 0;
@@ -40,11 +45,11 @@
 
 .title {
   font-size: 20px;
-  font-weight: 700;
   margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .text {

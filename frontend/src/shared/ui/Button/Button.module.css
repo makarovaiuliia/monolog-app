@@ -8,6 +8,13 @@
   transition: 0.3s;
 }
 
+.withIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 200;
+}
+
 .root:hover {
   background-color: rgba(176, 144, 140, 0.5);
 }

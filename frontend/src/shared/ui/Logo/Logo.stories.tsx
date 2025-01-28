@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "./Button";
+import { Logo } from "./Logo";
 
 const meta = {
-  title: "components/Button",
-  component: Button,
+  title: "components/Logo",
+  component: Logo,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -19,22 +19,9 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Logo>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const WithIcon: Story = {
-  args: {
-    text: "Your reflection",
-    icon: true,
-    onClick: () => {},
-  },
-};
-
-export const WithoutIcon: Story = {
-  args: {
-    text: "share",
-    onClick: () => {},
-  },
-};
+export const normal: Story = {};

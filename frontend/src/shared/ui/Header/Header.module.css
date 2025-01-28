@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  background-color: var(--background-secondary);
+  border-radius: 30px;
+  border: 1px solid black;
+}
+
+.fullScreen {
+  height: 100dvh;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 200;
+  color: var(--text-secondary);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logoBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
