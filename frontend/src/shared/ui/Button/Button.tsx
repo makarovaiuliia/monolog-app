@@ -6,13 +6,15 @@ interface Props {
   icon?: boolean;
   text: string;
   onClick?: () => void;
+  type?: "submit" | "reset" | "button";
 }
 
-export const Button = ({ icon, text, onClick }: Props) => {
+export const Button = ({ icon, text, onClick, type }: Props) => {
   return (
     <button
       className={cn(styles.root, icon && styles.withIcon)}
       onClick={onClick}
+      type={type}
     >
       <p>{text}</p>
       {icon && (

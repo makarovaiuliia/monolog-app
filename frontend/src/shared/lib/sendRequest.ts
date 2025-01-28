@@ -1,4 +1,4 @@
-interface apiRequestConfig {
+export interface apiRequestConfig {
   endpoint: string;
   method: "GET" | "POST" | "PUT" | "DELETE";
   body: any;
