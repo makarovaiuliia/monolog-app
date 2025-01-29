@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Input } from "./Input";
+import { AuthForm } from "./AuthForm";
 
 const meta = {
-  title: "components/Input",
-  component: Input,
+  title: "components/AuthForm",
+  component: AuthForm,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -13,19 +13,24 @@ const meta = {
           maxWidth: "400px",
           backgroundColor: "rgba(188, 206, 236, 0.1)",
           padding: "20px",
+          height: "400px",
         }}
       >
         <Story />
       </div>
     ),
   ],
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof AuthForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const normal: Story = {
+export const LoginForm: Story = {
+  args: {},
+};
+
+export const SignupForm: Story = {
   args: {
-    placeholder: "example@gmail.com",
+    isSignUp: true,
   },
 };

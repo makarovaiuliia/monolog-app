@@ -1,20 +1,48 @@
+import {
+  FieldValues,
+  Path,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form";
 import styles from "./Input.module.css";
-import { ChangeEvent, InputHTMLAttributes, useState } from "react";
+import cn from "clsx";
 
-interface Props {
+interface Props<T extends FieldValues> {
   placeholder?: string;
-  value: string;
-  onChange: (e: any) => void;
   type: string;
+  register: UseFormRegister<T>;
+  label: Path<T>;
+  required: boolean;
+  validation?: RegisterOptions<T>;
+  errorMessage?: string;
 }
-export const Input = ({ placeholder, value, onChange, type }: Props) => {
+
+export const Input = <T extends FieldValues>({
+  placeholder,
+  type,
+  register,
+  required,
+  label,
+  validation,
+  errorMessage,
+}: Props<T>) => {
+  const inputId = `input-${label}`;
+
   return (
-    <input
-      value={value}
-      onChange={onChange}
-      className={styles.root}
-      placeholder={placeholder ?? undefined}
-      type={type}
-    />
+    <div className={styles.root}>
+      <input
+        className={cn(styles.input, errorMessage && styles.inputWithError)}
+        placeholder={placeholder ?? undefined}
+        type={type}
+        aria-invalid={!!errorMessage}
+        aria-describedby={errorMessage ? `${inputId}-error` : undefined}
+        {...register(label, { required, ...validation })}
+      />
+      {errorMessage && (
+        <span id={`${inputId}-error`} className={styles.error} role="alert">
+          {errorMessage}
+        </span>
+      )}
+    </div>
   );
 };

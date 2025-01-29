@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 20px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.error {
+  color: var(--accent-furious);
+  font-size: 14px;
+  margin-left: 20px;
+}

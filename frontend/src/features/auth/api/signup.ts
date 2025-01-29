@@ -20,7 +20,7 @@ type Response = {
   accessToken: string;
 };
 
-export const register = (body: Request): Promise<Response> => {
+export const signup = (body: Request): Promise<Response> => {
   const params: apiRequestConfig = {
     endpoint: "register",
     method: "POST",

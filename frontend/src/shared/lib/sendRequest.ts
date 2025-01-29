@@ -23,8 +23,15 @@ export const sendRequest = async <T>({
       body: body ? JSON.stringify(body) : undefined,
     });
 
+    if (!response.ok) {
+      const errorResponse = await response.json().catch(() => null);
+      const errorMessage =
+        errorResponse?.message || `HTTP error! Status: ${response.status}`;
+      throw new Error(errorMessage);
+    }
+
     return response.json();
   } catch (error: any) {
-    throw error.message;
+    throw error instanceof Error ? error : new Error(String(error));
   }
 };

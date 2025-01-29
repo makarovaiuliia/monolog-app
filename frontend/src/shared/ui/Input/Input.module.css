@@ -1,4 +1,10 @@
 .root {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
   border-radius: 60px;
   padding: 20px;
   background-color: rgba(176, 144, 140, 0.3);
@@ -7,10 +13,20 @@
   font-weight: 600;
 }
 
-.root:focus-visible {
+.input:focus-visible {
   outline: 1px solid rgba(176, 144, 140, 1);
 }
 
-.root::placeholder {
+.input::placeholder {
   color: var(--text-secondary);
+}
+
+.inputWithError {
+  border: 2px solid var(--accent-furious);
+}
+
+.error {
+  color: var(--accent-furious);
+  font-size: 14px;
+  margin-left: 20px;
 }

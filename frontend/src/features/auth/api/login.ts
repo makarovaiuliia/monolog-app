@@ -19,7 +19,7 @@ type Response = {
   accessToken: string;
 };
 
-export const login = (body: Request): Promise<Response> => {
+export const login = async (body: Request): Promise<Response> => {
   const params: apiRequestConfig = {
     endpoint: "login",
     method: "POST",
