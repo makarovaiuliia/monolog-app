@@ -1,4 +1,5 @@
 import { apiRequestConfig, sendRequest } from "@/shared/lib/sendRequest";
+import { AuthResponse } from "@/shared/types/authResponse";
 
 type Request = {
   email: string;
@@ -6,19 +7,7 @@ type Request = {
   username: string;
 };
 
-type UserDto = {
-  email: string;
-  username: string;
-  id: string;
-};
-
-type Response = {
-  user: UserDto;
-  refreshToken: string;
-  accessToken: string;
-};
-
-export const signup = (body: Request): Promise<Response> => {
+export const signup = (body: Request): Promise<AuthResponse> => {
   const params: apiRequestConfig = {
     endpoint: "register",
     method: "POST",

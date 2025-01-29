@@ -1,7 +1,7 @@
 export interface apiRequestConfig {
   endpoint: string;
   method: "GET" | "POST" | "PUT" | "DELETE";
-  body: any;
+  body?: any;
   headers?: Record<string, string>;
 }
 

@@ -1,23 +1,12 @@
 import { apiRequestConfig, sendRequest } from "@/shared/lib/sendRequest";
+import { AuthResponse } from "@/shared/types/authResponse";
 
 type Request = {
   email: string;
   password: string;
 };
 
-type UserDto = {
-  email: string;
-  username: string;
-  id: string;
-};
-
-type Response = {
-  user: UserDto;
-  refreshToken: string;
-  accessToken: string;
-};
-
-export const login = async (body: Request): Promise<Response> => {
+export const login = async (body: Request): Promise<AuthResponse> => {
   const params: apiRequestConfig = {
     endpoint: "login",
     method: "POST",
