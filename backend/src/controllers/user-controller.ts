@@ -24,6 +24,7 @@ class UserController implements IUserController {
         maxAge: MAX_AGE,
         httpOnly: true,
         secure: true,
+        path: "/",
       });
       res.status(201).json(userData);
     } catch (err) {
@@ -38,6 +39,7 @@ class UserController implements IUserController {
         maxAge: MAX_AGE,
         httpOnly: true,
         secure: true,
+        path: "/",
       });
       res.status(201).json(userData);
     } catch (err) {
