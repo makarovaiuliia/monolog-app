@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../shared/styles/global.css";
-import "../shared/styles/variables.css";
 
 const Chocolates = localFont({
   src: [

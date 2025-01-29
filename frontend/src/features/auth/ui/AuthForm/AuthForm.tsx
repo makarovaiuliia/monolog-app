@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/shared/ui/Input/Input";
 import { Button } from "@/shared/ui/Button/Button";
 import { login } from "../../api/login";
@@ -23,7 +25,6 @@ export const AuthForm = ({ isSignUp }: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<InputsLogin | InputsSignup>();
 

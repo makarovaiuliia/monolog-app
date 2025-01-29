@@ -30,7 +30,6 @@ export const FullScreen: Story = {
     greetings: "Hello, Julia 💛",
     title: "How do you feel today? Share your feelings in a personal diary",
     subtitle: "Daily reflection",
-    onSettingsClick: () => {},
     children: <Button text="Your reflection" icon={true} />,
   },
 };
@@ -40,7 +39,6 @@ export const Normal: Story = {
     greetings: "Hello, Julia 💛",
     title: "How do you feel today? Share your feelings in a personal diary",
     subtitle: "Daily reflection",
-    onSettingsClick: () => {},
     children: <Button text="Your reflection" icon={true} />,
   },
 };
@@ -49,6 +47,22 @@ export const WithoutChildren: Story = {
   args: {
     title: "Log into your account",
     subtitle: "New to monolog? Sign up",
-    onSettingsClick: () => {},
+  },
+};
+
+export const WithReactNodeSubtitle: Story = {
+  args: {
+    title: "Log into your account",
+    subtitle: (
+      <>
+        New to monolog?{" "}
+        <span
+          style={{ fontWeight: "600", cursor: "pointer" }}
+          onClick={() => alert("Clicked")}
+        >
+          Sign up
+        </span>
+      </>
+    ),
   },
 };

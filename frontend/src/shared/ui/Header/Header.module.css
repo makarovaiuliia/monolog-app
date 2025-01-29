@@ -1,11 +1,12 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
   padding: 20px;
   background-color: var(--background-secondary);
-  border-radius: 30px;
-  border: 1px solid black;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  width: 100%;
 }
 
 .fullScreen {

@@ -1,6 +1,4 @@
 import { apiRequestConfig, sendRequest } from "@/shared/lib/sendRequest";
-import { ApiError } from "next/dist/server/api-utils";
-import { headers } from "next/headers";
 
 type Request = {
   email: string;

@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Header.module.css";
 import Image from "next/image";
 import cn from "clsx";
@@ -6,16 +7,14 @@ import { Logo } from "../Logo/Logo";
 
 interface Props {
   isFullScreen?: boolean;
-  onSettingsClick?: () => void;
   title: string;
-  subtitle?: string;
+  subtitle?: string | ReactNode;
   children?: ReactNode;
   greetings?: string;
 }
 
 export const Header = ({
   isFullScreen,
-  onSettingsClick,
   title,
   subtitle,
   children,
@@ -25,18 +24,16 @@ export const Header = ({
     <header className={cn(styles.root, isFullScreen && styles.fullScreen)}>
       <div className={styles.logoBox}>
         <Logo />
-        {onSettingsClick && (
-          <Image
-            alt="settings icon"
-            src="/settings.svg"
-            width={24}
-            height={24}
-            onClick={onSettingsClick}
-          />
-        )}
+        <Image
+          alt="settings icon"
+          src="/settings.svg"
+          width={24}
+          height={24}
+          onClick={() => {}}
+        />
       </div>
       <div className={styles.info}>
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        <p className={styles.subtitle}>{subtitle}</p>
         <div>
           {greetings && <h1 className={styles.title}>{greetings}</h1>}
           <h2 className={styles.title}>{title}</h2>
