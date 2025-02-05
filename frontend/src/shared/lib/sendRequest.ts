@@ -5,7 +5,7 @@ export interface apiRequestConfig {
   headers?: Record<string, string>;
 }
 
-const API_LINK = process.env.API_LINK;
+const API_LINK = process.env.NEXT_PUBLIC_API_LINK;
 
 export const sendRequest = async <T>({
   endpoint,
@@ -21,6 +21,7 @@ export const sendRequest = async <T>({
         ...headers,
       },
       body: body ? JSON.stringify(body) : undefined,
+      credentials: "include",
     });
 
     if (!response.ok) {

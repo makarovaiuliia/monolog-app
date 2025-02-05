@@ -1,7 +1,7 @@
 import { apiRequestConfig, sendRequest } from "@/shared/lib/sendRequest";
 import { IEntry } from "@/shared/types/entry";
 
-export const fetchList = async (
+export const fetchListApi = async (
   userId: string,
   accessToken: string
 ): Promise<IEntry[]> => {

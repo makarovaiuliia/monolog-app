@@ -22,8 +22,7 @@ class UserController implements IUserController {
       const userData = await userService.register(req.body);
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: MAX_AGE,
-        httpOnly: true,
-        secure: true,
+        // TODO: убираем httpOnly, так как без https почему то не передается кука нормально
         path: "/",
       });
       res.status(201).json(userData);
@@ -37,8 +36,8 @@ class UserController implements IUserController {
       const userData = await userService.login(req.body);
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: MAX_AGE,
-        httpOnly: true,
-        secure: true,
+        // TODO: убираем httpOnly, так как без https почему то не передается кука нормально
+
         path: "/",
       });
       res.status(201).json(userData);
@@ -64,6 +63,7 @@ class UserController implements IUserController {
   async refresh(req: Request, res: Response, next: NextFunction) {
     try {
       const { refreshToken } = req.cookies;
+      console.log(req.cookies);
       if (!refreshToken) {
         throw AppError.BadRequest("No refresh token provided");
       }

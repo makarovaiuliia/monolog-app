@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../shared/styles/global.css";
-import { observer } from "mobx-react-lite";
-import { authStore } from "@/features/auth/model/authStore";
-import { useEffect } from "react";
 
 const Chocolates = localFont({
   src: [
@@ -36,22 +33,14 @@ export const metadata: Metadata = {
     "monolog is an app for keeping a personal diary and mood logging. Share you thoughts, pain, happiness and sadness with us",
 };
 
-export default observer(function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    authStore.refreshToken();
-  }, []);
-
-  if (authStore.loading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <html lang="en">
       <body className={`${Chocolates.className}`}>{children}</body>
     </html>
   );
-});
+}

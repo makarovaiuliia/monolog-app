@@ -24,10 +24,10 @@ class AuthStore {
       const { accessToken, user } = await refresh();
       this.setAccessToken(accessToken);
       this.setUser(user);
-    } catch (error) {
-      console.error("Failed to refresh token:", error);
+    } catch (error: any) {
       this.setUser(null);
       this.setAccessToken(null);
+      throw new Error("Failed to refresh token:", error);
     } finally {
       this.loading = false;
     }
