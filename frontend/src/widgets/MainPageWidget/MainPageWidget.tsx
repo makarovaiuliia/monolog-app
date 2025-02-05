@@ -10,31 +10,7 @@ import { Header } from "@/shared/ui/Header/Header";
 import { EntryList } from "@/features/entryList/ui/EntryList";
 import { Error } from "@/shared/ui/Error/Error";
 import { Button } from "@/shared/ui/Button/Button";
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const day = date.getDate();
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
-
-  return `${day} ${month} ${year}`;
-}
+import { formatDate } from "@/features/entryList/model/formatDate";
 
 const groupEntriesByDate = (entries: IEntry[]): Record<string, IEntry[]> =>
   entries.reduce((acc, entry) => {
@@ -75,16 +51,24 @@ export const MainPageWidget = observer(() => {
     <Header
       title="How do you feel today? Share your feelings in a personal diary"
       subtitle="Daily reflection"
-      greetings={`Hello, ${authStore.user?.username ?? "User"}\u00A0💛`}
+      greetings={
+        authStore.user
+          ? `Hello, ${authStore.user?.username}\u00A0💛`
+          : undefined
+      }
       isFullScreen={isFullScreen}
     >
       <Button
-        onClick={() => alert("next page")}
+        onClick={() => redirect("/add")}
         text="Your reflection"
         icon={true}
       />
     </Header>
   );
+
+  if (!authStore.user) {
+    return;
+  }
 
   if (error) {
     return (

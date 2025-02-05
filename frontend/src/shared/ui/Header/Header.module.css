@@ -12,6 +12,8 @@
 .fullScreen {
   height: 100dvh;
   justify-content: space-between;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .title {
