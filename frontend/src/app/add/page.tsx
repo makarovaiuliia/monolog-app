@@ -9,7 +9,7 @@ export default function AddEntryPage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "100dvh",
+        minHeight: "100dvh",
         backgroundColor: "var(--background-color)",
       }}
     >

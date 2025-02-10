@@ -10,6 +10,9 @@ import styles from "./AddEntryForm.module.css";
 import { formatDate } from "@/features/entryList/model/formatDate";
 import { Moods } from "@/shared/types/mood";
 import { useForm, Controller } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Loader from "@/shared/ui/Loader/Loader";
 
 interface AddEntryFormData {
   title: string;
@@ -19,7 +22,9 @@ interface AddEntryFormData {
 
 export const AddEntryForm = observer(() => {
   const { user, accessToken } = authStore;
+  const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
   const {
     handleSubmit,
     control,
@@ -39,12 +44,19 @@ export const AddEntryForm = observer(() => {
   const onSubmit = async (data: AddEntryFormData) => {
     if (!user || !accessToken) return;
     try {
+      setLoading(true);
       await addEntryApi(user.id, accessToken, data);
-      alert("Entry added successfully!");
+      router.push("/");
     } catch (err) {
       console.error("Error adding entry:", err);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.root} noValidate>

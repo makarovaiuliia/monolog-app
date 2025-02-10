@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./AuthForm.module.css";
 import { useState } from "react";
 import { signup } from "../../api/signup";
+import { useRouter } from "next/navigation";
 
 type InputsLogin = {
   email: string;
@@ -27,6 +28,7 @@ export const AuthForm = ({ isSignUp }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<InputsLogin | InputsSignup>();
+  const router = useRouter();
 
   const [serverError, setServerError] = useState("");
 
@@ -37,6 +39,7 @@ export const AuthForm = ({ isSignUp }: Props) => {
       } else {
         await login(data as InputsLogin);
       }
+      router.push("/");
     } catch (err: any) {
       console.log(err);
       setServerError(err.message ? err.message : "Internal server error");

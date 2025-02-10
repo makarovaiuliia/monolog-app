@@ -1,5 +1,4 @@
 import { IEntry } from "@/shared/types/entry";
-import { observer } from "mobx-react-lite";
 import styles from "./EntryList.module.css";
 import { Entry } from "@/shared/ui/Entry/Entry";
 
@@ -7,8 +6,7 @@ interface Props {
   list: Record<string, IEntry[]>;
 }
 
-export const EntryList = observer(({ list }: Props) => {
-  // maka@gmail.com
+export const EntryList = ({ list }: Props) => {
   return (
     <ul className={styles.root}>
       {Object.entries(list).map(([date, entries]) => (
@@ -17,10 +15,10 @@ export const EntryList = observer(({ list }: Props) => {
           <ul className={styles.entryGroup}>
             {entries.map((entry) => (
               <Entry
+                key={entry.id}
                 title={entry.title}
                 body={entry.content}
                 mood={entry.mood}
-                key={entry.id}
               />
             ))}
           </ul>
@@ -28,4 +26,4 @@ export const EntryList = observer(({ list }: Props) => {
       ))}
     </ul>
   );
-});
+};

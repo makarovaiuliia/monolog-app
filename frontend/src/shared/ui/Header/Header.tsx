@@ -4,6 +4,8 @@ import Image from "next/image";
 import cn from "clsx";
 import { ReactNode } from "react";
 import { Logo } from "../Logo/Logo";
+import { logout } from "@/shared/lib/logout";
+import { useRouter } from "next/navigation";
 
 interface Props {
   isFullScreen?: boolean;
@@ -11,6 +13,7 @@ interface Props {
   subtitle?: string | ReactNode;
   children?: ReactNode;
   greetings?: string;
+  // handleLogout: () => void;
 }
 
 export const Header = ({
@@ -19,7 +22,8 @@ export const Header = ({
   subtitle,
   children,
   greetings,
-}: Props) => {
+}: // handleLogout,
+Props) => {
   return (
     <header className={cn(styles.root, isFullScreen && styles.fullScreen)}>
       <div className={styles.logoBox}>

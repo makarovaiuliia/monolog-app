@@ -6,12 +6,11 @@ interface Props {
   title: string;
   body: string;
   mood: Moods;
-  key: any;
 }
 
-export const Entry = ({ title, body, mood, key }: Props) => {
+export const Entry = ({ title, body, mood }: Props) => {
   return (
-    <article className={cn(styles.root, styles[mood])} key={key}>
+    <article className={cn(styles.root, styles[mood])}>
       <div className={styles.info}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.text}>{body}</p>

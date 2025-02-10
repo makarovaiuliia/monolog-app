@@ -7,7 +7,7 @@ export default class UserDto {
 
   constructor(model: { email: string; _id: any; username: string }) {
     this.email = model.email;
-    this.username = model.email;
+    this.username = model.username;
     this.id = model._id as Types.ObjectId;
   }
 }
