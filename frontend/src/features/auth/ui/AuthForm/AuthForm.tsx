@@ -5,9 +5,11 @@ import { Button } from "@/shared/ui/Button/Button";
 import { login } from "../../api/login";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./AuthForm.module.css";
-import { useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { signup } from "../../api/signup";
 import { useRouter } from "next/navigation";
+import { authStore } from "../../model/authStore";
+import Loader from "@/shared/ui/Loader/Loader";
 
 type InputsLogin = {
   email: string;
@@ -30,14 +32,19 @@ export const AuthForm = ({ isSignUp }: Props) => {
   } = useForm<InputsLogin | InputsSignup>();
   const router = useRouter();
 
+
   const [serverError, setServerError] = useState("");
 
   const onSubmit: SubmitHandler<InputsLogin | InputsSignup> = async (data) => {
     try {
       if (isSignUp) {
-        await signup(data as InputsSignup);
+        const { accessToken, user } = await signup(data as InputsSignup);
+        authStore.setAccessToken(accessToken);
+        authStore.setUser(user);
       } else {
-        await login(data as InputsLogin);
+        const { accessToken, user } = await login(data as InputsLogin);
+        authStore.setAccessToken(accessToken);
+        authStore.setUser(user);
       }
       router.push("/");
     } catch (err: any) {

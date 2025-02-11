@@ -1,6 +1,4 @@
-import { AuthForm } from "@/features/auth/ui/AuthForm/AuthForm";
-import { Header } from "@/shared/ui/Header/Header";
-import Link from "next/link";
+import { AuthPageWidget } from "@/widgets/AuthPageWidget/AuthPageWidget";
 
 export default function SignUpPage() {
   return (
@@ -14,21 +12,7 @@ export default function SignUpPage() {
         backgroundColor: "var(--background-color)",
       }}
     >
-      <Header
-        title="Sign up for monolog"
-        subtitle={
-          <>
-            Already have an account?{" "}
-            <Link
-              style={{ fontWeight: "600", cursor: "pointer" }}
-              href="/sign-in"
-            >
-              Log in
-            </Link>
-          </>
-        }
-      />
-      <AuthForm isSignUp={true} />
+      <AuthPageWidget isSignUp={true} />
     </main>
   );
 }

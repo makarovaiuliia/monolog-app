@@ -38,3 +38,14 @@
   justify-content: space-between;
   gap: 10px;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .settings {
+    cursor: pointer;
+    transition: 0.3s transform ease-in-out;
+  }
+
+  .settings:hover {
+    transform: rotate(90deg);
+  }
+}

@@ -1,6 +1,4 @@
-import { AuthForm } from "@/features/auth/ui/AuthForm/AuthForm";
-import { Header } from "@/shared/ui/Header/Header";
-import Link from "next/link";
+import { AuthPageWidget } from "@/widgets/AuthPageWidget/AuthPageWidget";
 
 export default function SignInPage() {
   return (
@@ -14,21 +12,7 @@ export default function SignInPage() {
         backgroundColor: "var(--background-color)",
       }}
     >
-      <Header
-        title="Log into your account"
-        subtitle={
-          <>
-            New to monolog?{" "}
-            <Link
-              style={{ fontWeight: "600", cursor: "pointer" }}
-              href="/sign-up"
-            >
-              Sign up
-            </Link>
-          </>
-        }
-      />
-      <AuthForm />
+      <AuthPageWidget />
     </main>
   );
 }

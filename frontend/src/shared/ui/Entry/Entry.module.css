@@ -64,5 +64,35 @@
   height: 55px;
   border-radius: 100%;
   flex-shrink: 0;
-  background-color: #d9d9d9;
+  border: 2px solid var(--text);
+}
+
+.root.Upset .mood {
+  background-image: url("../../../../public/upset.svg");
+  background-position: center;
+}
+
+.root.Happy .mood {
+  background-image: url("../../../../public/happy.svg");
+  background-position: center;
+}
+
+.root.Satisfied .mood {
+  background-image: url("../../../../public/satisfied.svg");
+  background-position: center;
+}
+
+.root.Depressed .mood {
+  background-image: url("../../../../public/depressed.svg");
+  background-position: center;
+}
+
+.root.Furious .mood {
+  background-image: url("../../../../public/furious.svg");
+  background-position: center;
+}
+
+.root.Good .mood {
+  background-image: url("../../../../public/good.svg");
+  background-position: center;
 }

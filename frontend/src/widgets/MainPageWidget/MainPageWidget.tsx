@@ -65,6 +65,7 @@ export const MainPageWidget = observer(() => {
           : undefined
       }
       isFullScreen={isFullScreen}
+      withSettings={true}
     >
       <Button
         onClick={() => redirect("/add")}

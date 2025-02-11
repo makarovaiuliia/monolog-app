@@ -11,6 +11,8 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 4px;
+  border-radius: 20px;
+  padding: 4px 8px;
 }
 
 .input:focus,
@@ -29,6 +31,9 @@
   font-size: 16px;
   font-weight: 400;
   resize: none;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 8px;
 }
 
 .subtitle {
@@ -49,7 +54,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 
 .mood {
@@ -63,26 +68,32 @@
 
 .mood.Happy {
   background-color: var(--accent-happy);
+  background-image: url("../../../../../public/happy.svg");
 }
 
 .mood.Satisfied {
   background-color: var(--accent-satisfaction);
+  background-image: url("../../../../../public/satisfied.svg");
 }
 
 .mood.Good {
   background-color: var(--accent-good);
+  background-image: url("../../../../../public/good.svg");
 }
 
 .mood.Furious {
   background-color: var(--accent-furious);
+  background-image: url("../../../../../public/furious.svg");
 }
 
 .mood.Upset {
   background-color: var(--accent-upset);
+  background-image: url("../../../../../public/upset.svg");
 }
 
 .mood.Depressed {
   background-color: var(--accent-depressed);
+  background-image: url("../../../../../public/depressed.svg");
 }
 
 .moodText {
@@ -90,6 +101,6 @@
 }
 
 .selected {
-  outline: 1px solid var(--text);
-  outline-offset: 1px;
+  outline: 5px solid var(--white);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

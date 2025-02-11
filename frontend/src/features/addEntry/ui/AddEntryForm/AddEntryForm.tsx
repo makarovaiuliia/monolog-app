@@ -46,6 +46,7 @@ export const AddEntryForm = observer(() => {
     try {
       setLoading(true);
       await addEntryApi(user.id, accessToken, data);
+      setLoading(false);
       router.push("/");
     } catch (err) {
       console.error("Error adding entry:", err);

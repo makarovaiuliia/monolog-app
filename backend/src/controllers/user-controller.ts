@@ -54,7 +54,7 @@ class UserController implements IUserController {
       }
       await userService.logout(refreshToken);
       res.clearCookie("refreshToken");
-      res.status(200).json();
+      res.status(200).json("User logged out");
     } catch (err) {
       next(err);
     }

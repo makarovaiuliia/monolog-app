@@ -13,7 +13,7 @@ export interface IEntryService {
 class EntryService implements IEntryService {
   async getAllEntries(userId: string) {
     try {
-      const entries = await Entry.find({ userId }).exec();
+      const entries = await Entry.find({ userId }).sort({ date: -1 }).exec();
       return entries;
     } catch (err) {
       throw AppError.BadRequest("No entries were found");
