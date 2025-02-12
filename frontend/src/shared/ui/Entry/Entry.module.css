@@ -61,13 +61,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-height: 200px;
-  transition: opacity 0.3s ease-in;
+  max-height: 40px;
+  transition: max-height 0.3s ease-in-out;
 }
 
 .root.open .text {
   white-space: normal;
-  overflow-y: scroll;
+  overflow-y: auto;
+  max-height: 200px;
 }
 
 .mood {
