@@ -4,9 +4,10 @@ import { Entry } from "@/shared/ui/Entry/Entry";
 
 interface Props {
   list: Record<string, IEntry[]>;
+  handleDelete: (id: string) => void;
 }
 
-export const EntryList = ({ list }: Props) => {
+export const EntryList = ({ list, handleDelete }: Props) => {
   return (
     <ul className={styles.root}>
       {Object.entries(list).map(([date, entries]) => (
@@ -14,11 +15,13 @@ export const EntryList = ({ list }: Props) => {
           <p className={styles.date}>{date}</p>
           <ul className={styles.entryGroup}>
             {entries.map((entry) => (
-              <li key={entry._id}>
+              <li key={entry._id} className={styles.entry}>
                 <Entry
                   title={entry.title}
                   mood={entry.mood}
                   body={entry.content}
+                  id={entry._id}
+                  handleDelete={handleDelete}
                 />
               </li>
             ))}

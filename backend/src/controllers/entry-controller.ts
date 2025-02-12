@@ -5,6 +5,7 @@ interface IEntryController {
   getAllEntries(req: Request, res: Response, next: NextFunction): Promise<void>;
   getEntryById(req: Request, res: Response, next: NextFunction): Promise<void>;
   addEntry(req: Request, res: Response, next: NextFunction): Promise<void>;
+  deleteEntry(req: Request, res: Response, next: NextFunction): Promise<void>;
   editEntry(req: Request, res: Response, next: NextFunction): Promise<void>;
 }
 
@@ -34,6 +35,19 @@ class EntryController implements IEntryController {
       const userId = req.params.userId;
 
       const entry = await EntryService.addEntry(req.body, userId);
+      res.status(200).json({ data: entry });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async deleteEntry(req: Request, res: Response, next: NextFunction) {
+    try {
+      const entryId = req.params.entryId;
+
+      const entry = await EntryService.deleteEntry(entryId);
+      console.log(entry);
+
       res.status(200).json({ data: entry });
     } catch (err) {
       next(err);

@@ -7,6 +7,7 @@ export interface IEntryService {
   getAllEntries(userId: string): Promise<IEntryDocument[]>;
   getEntryById(entryId: string): Promise<IEntryDocument>;
   addEntry(entry: IEntry, userId: string): Promise<IEntryDocument>;
+  deleteEntry(entryId: string): Promise<IEntryDocument>;
   editEntry(entry: Partial<IEntry>, entryId: string): Promise<IEntryDocument>;
 }
 
@@ -53,6 +54,16 @@ class EntryService implements IEntryService {
     });
 
     return newEntry;
+  }
+
+  async deleteEntry(entryId: string) {
+    const entry = await Entry.findByIdAndDelete(entryId);
+
+    if (!entry) {
+      throw AppError.BadRequest("Entry not found");
+    }
+
+    return entry;
   }
 
   async editEntry(entry: IEntry, entryId: string) {

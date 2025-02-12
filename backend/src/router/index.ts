@@ -20,12 +20,12 @@ router.get("/refresh", UserController.refresh);
 // user
 // router.get("/users", UserController.getUser); // get user by token or id
 
-
 // diary operations
 
 router.get("/:userId/entries", authMiddleware, EntryController.getAllEntries);
 router.get("/entries/:entryId", authMiddleware, EntryController.getEntryById);
 router.post("/:userId/entries", authMiddleware, EntryController.addEntry);
+router.post("/delete/:entryId", EntryController.deleteEntry);
 router.post("/entries/:entryId", authMiddleware, EntryController.editEntry);
 
 export default router;

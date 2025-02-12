@@ -12,6 +12,7 @@ import { Error } from "@/shared/ui/Error/Error";
 import { Button } from "@/shared/ui/Button/Button";
 import { formatDate } from "@/features/entryList/model/formatDate";
 import Loader from "@/shared/ui/Loader/Loader";
+import { deleteEntry } from "@/features/entryList/api/deleteEntry";
 
 const groupEntriesByDate = (entries: IEntry[]): Record<string, IEntry[]> =>
   entries.reduce((acc, entry) => {
@@ -54,6 +55,26 @@ export const MainPageWidget = observer(() => {
   useEffect(() => {
     refreshToken();
   }, [refreshToken]);
+
+  const handleDelete = async (id: string) => {
+    const deleteResult = await deleteEntry(id);
+    setList((prev) => {
+      const updatedList = { ...prev };
+
+      for (const date in updatedList) {
+        updatedList[date] = updatedList[date].filter(
+          (entry) => entry._id !== id
+        );
+
+        if (updatedList[date].length === 0) {
+          delete updatedList[date];
+        }
+      }
+
+      return updatedList;
+    });
+    console.log(deleteResult);
+  };
 
   const renderHeaderWithButton = (isFullScreen: boolean = false) => (
     <Header
@@ -99,7 +120,7 @@ export const MainPageWidget = observer(() => {
   return (
     <main>
       {renderHeaderWithButton()}
-      <EntryList list={list} />
+      <EntryList list={list} handleDelete={handleDelete} />
     </main>
   );
 });

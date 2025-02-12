@@ -1,7 +1,6 @@
 import { apiRequestConfig, sendRequest } from "@/shared/lib/sendRequest";
-import { AuthResponse } from "@/shared/types/authResponse";
 
-export const logout = async (accessToken: string): Promise<AuthResponse> => {
+export const logout = async (accessToken: string): Promise<void> => {
   const params: apiRequestConfig = {
     endpoint: "logout",
     method: "POST",
