@@ -1,7 +1,7 @@
 import { Moods } from "./mood";
 
 export interface IEntry {
-  id: string;
+  _id: string;
   content: string;
   title: string;
   mood: Moods;

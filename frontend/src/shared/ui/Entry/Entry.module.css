@@ -4,10 +4,14 @@
   gap: 20px;
   width: 100%;
   align-items: flex-start;
-  transition: 0.3s;
+  transition: opacity 0.3s ease-in;
   border-radius: 30px;
   background-color: var(--white);
-  transition: 0.3s;
+}
+
+.root.open {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
 }
 
 .root.Happy {
@@ -57,6 +61,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-height: 200px;
+}
+
+.root.open .text {
+  white-space: normal;
+  overflow-y: scroll;
 }
 
 .mood {

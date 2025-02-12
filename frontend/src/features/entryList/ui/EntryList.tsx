@@ -14,12 +14,13 @@ export const EntryList = ({ list }: Props) => {
           <p className={styles.date}>{date}</p>
           <ul className={styles.entryGroup}>
             {entries.map((entry) => (
-              <Entry
-                key={entry.id}
-                title={entry.title}
-                body={entry.content}
-                mood={entry.mood}
-              />
+              <li key={entry._id}>
+                <Entry
+                  title={entry.title}
+                  mood={entry.mood}
+                  body={entry.content}
+                />
+              </li>
             ))}
           </ul>
         </li>
